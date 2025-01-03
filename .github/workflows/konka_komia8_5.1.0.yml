@@ -152,7 +152,7 @@ jobs:
       uses: actions/upload-artifact@main
       if: env.STATUS == 'success' && !cancelled()
       with:
-        name: FCJ_G-AX1800-immortalwrt闭源固件
+        name: KONKA_KOMI-A8-immortalwrt闭源固件
         path: ${{ env.FIRMWARE }}
 
     - name: Create release tag
