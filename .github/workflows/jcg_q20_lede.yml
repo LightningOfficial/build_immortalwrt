@@ -7,7 +7,7 @@
 #
 #
 
-name: build Lead lede JCG-Q20
+name: build Lean lede JCG-Q20
 
 on: 
   workflow_dispatch:
