@@ -10,19 +10,25 @@
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
 # 修改openwrt登陆地址,把下面的192.168.123.1修改成你想要的就可以了
-sed -i 's/192.168.6.1/192.168.10.1/g' package/base-files/files/bin/config_generate
+#sed -i 's/192.168.6.1/192.168.10.1/g' package/base-files/files/bin/config_generate
 
 # 修改主机名字，把ImmortalWrt修改你喜欢的就行（不能纯数字或者使用中文）
 sed -i 's/ImmortalWrt/ZTT-RX6000/g' package/base-files/files/bin/config_generate
+
+#替换NTP服务器
+sed -i 's/time1.apple.com/ntp.aliyun.com/g' package/base-files/files/bin/config_generate
+sed -i 's/time1.google.com/ntp.ntsc.ac.cn/g' package/base-files/files/bin/config_generate
+sed -i 's/time.cloudflare.com/cn.pool.ntp.org/g' package/base-files/files/bin/config_generate
+sed -i 's/pool.ntp.org/time.windows.com/g' package/base-files/files/bin/config_generate
 
 # 修改闭源驱动2G wifi名称
 sed -i 's/SSID1=CR660X_2.4G/SSID1=RX6000/g' package/emortal/mtkhqos_util/files/mt7615.1.2G.dat
 
 # 修改闭源驱动5G wifi名称
-sed -i 's/SSID1=Openwrt_5G/SSID1=RX6000-5G/g' package/emortal/mtkhqos_util/files/mt7615.1.5G.dat
+sed -i 's/SSID1=Openwrt_5G/SSID1=RX6000_5G/g' package/emortal/mtkhqos_util/files/mt7615.1.5G.dat
 
 # 修改闭源驱动5G wifi信道
-sed -i 's/Channel=44/Channel=149/g' package/emortal/mtkhqos_util/files/mt7615.1.5G.dat
+#sed -i 's/Channel=44/Channel=149/g' package/emortal/mtkhqos_util/files/mt7615.1.5G.dat
 
 # 添加个性信息
 #sed -i 's/22.5.5/22.5.5 by nanchuci/g' ./package/lean/default-settings/files/zzz-default-settings
@@ -50,7 +56,7 @@ sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=165535' packag
 #svn co https://github.com/kiddin9/openwrt-packages/trunk/luci-app-eqos
 
 # Add dnsfilter
-#git clone --depth=1 https://github.com/garypang13/luci-app-dnsfilter
+git clone --depth=1 https://github.com/garypang13/luci-app-dnsfilter
 
 # Add luci-app-passwall
 #svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-passwall
@@ -61,8 +67,8 @@ sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=165535' packag
 #git clone --depth=1 https://github.com/jerrykuku/luci-app-vssr
 
 # Add mentohust & luci-app-mentohust
-#git clone --depth=1 https://github.com/BoringCat/luci-app-mentohust
-#git clone --depth=1 https://github.com/KyleRicardo/MentoHUST-OpenWrt-ipk
+git clone --depth=1 https://github.com/BoringCat/luci-app-mentohust
+git clone --depth=1 https://github.com/KyleRicardo/MentoHUST-OpenWrt-ipk
 
 # Add lua-ipops
 #svn co https://github.com/x-wrt/com.x-wrt/trunk/lua-ipops
@@ -85,7 +91,7 @@ sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=165535' packag
 #svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash
 
 # Add luci-app-onliner (need luci-app-nlbwmon)
-#git clone --depth=1 https://github.com/rufengsuixing/luci-app-onliner
+git clone --depth=1 https://github.com/rufengsuixing/luci-app-onliner
 
 # Add luci-app-adguardhome
 #git clone --depth=1 https://github.com/SuLingGG/luci-app-adguardhome
@@ -104,7 +110,7 @@ sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=165535' packag
 #svn co https://github.com/linkease/istore/trunk/luci/luci-app-store
 
 # Add luci-app-nat6-helper
-#git clone --depth=1 https://github.com/Ausaci/luci-app-nat6-helper
+git clone --depth=1 https://github.com/Ausaci/luci-app-nat6-helper
 
 # Add luci-theme-argon
 #cd lede/package/lean
@@ -126,7 +132,7 @@ sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=165535' packag
 #git clone --depth=1 https://github.com/zcy85611/openwrt-luci-kcp-udp
 
 # Add OpenAppFilter
-#git clone --depth=1 https://github.com/destan19/OpenAppFilter
+git clone --depth=1 https://github.com/destan19/OpenAppFilter
 
 # Add luci-app-oled (R2S Only)
 #git clone --depth=1 https://github.com/NateLol/luci-app-oled
@@ -181,5 +187,5 @@ sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=165535' packag
 #popd
 
 #添加smartdns
-#git clone https://github.com/pymumu/openwrt-smartdns package/smartdns
-#git clone -b lede https://github.com/pymumu/luci-app-smartdns.git package/luci-app-smartdns
+git clone https://github.com/pymumu/openwrt-smartdns package/smartdns
+git clone -b lede https://github.com/pymumu/luci-app-smartdns.git package/luci-app-smartdns
