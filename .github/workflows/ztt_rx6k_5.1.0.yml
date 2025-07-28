@@ -134,7 +134,7 @@ jobs:
     - name: Download packages
       id: package
       run: |
-        python3 --version
+        cat $GITHUB_WORKSPACE/prereq-build.mk > $GITHUB_WORKSPACE/openwrt/include/prereq-build.mk
         cd openwrt
         make defconfig
         make download -j8
